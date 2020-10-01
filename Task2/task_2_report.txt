@@ -1,0 +1,17 @@
+In the parent process P, the value of a is 10, b is 25, fq = 0, and fr = 0.
+
+After doing the first fork process Q is created and the values of a,b, fq,
+and fr are copied over from process P.
+
+In process P, b = a+b-5 which makes the value of b = 30.
+Thus, in process P, a = 10, b = 30, fq = fr = 0 are printed.
+
+In process Q, a = a+b makes a = 35. So, it prints a = 35, b = 25 , fq = 0 (since we are in process Q)
+and fr = 0.
+
+After printing the above line there's a fork in process Q which makes a new process R.
+In process R, a = (a*b) + 30 which makes a = 905. So, it prints a = 905, b = 25, fq = process id of Q
+and fr = 0 (since we are in process R)
+
+If in process Q but not in R, then b = b+20 or 45. So it prints a = 35 (value is copied over before creating
+process R), b = 45, fq = 0 (since we are in process Q) and fr = process id of R
